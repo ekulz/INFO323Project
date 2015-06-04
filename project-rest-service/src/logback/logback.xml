@@ -1,0 +1,25 @@
+<!-- logback logging configuration -->
+<configuration debug="false">
+
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{HH:mm:ss} %-5level %logger{500} - %msg%n %ex{full}</pattern>
+      </encoder>
+   </appender>
+
+   <!-- set default logging level -->
+   <root level="info">
+      <appender-ref ref="STDOUT" />
+   </root>
+
+   <!-- show useful Camel messages -->
+   <logger name="org.apache.camel.processor.interceptor.Tracer" level="info" />
+   <logger name="org.apache.camel.impl.DefaultCamelContext" level="info" />
+
+   <!-- suppress everything except error messages from frameworks -->
+   <logger name="org.apache.camel" level="error" />
+   <logger name="org.springframework" level="error" />
+   <logger name="org.apache.cxf" level="error" />
+   <logger name="com.sun.jersey" level="error" />
+
+</configuration>
